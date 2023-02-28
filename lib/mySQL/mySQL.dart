@@ -6,15 +6,16 @@ class MySQL{
 
   Future<void> establishConnection() async{
     conn = await MySqlConnection.connect(ConnectionSettings(
-        host: 'localhost',
+        host: '10.0.2.2',
         port: 3306,
-        user: 'root',
+        user: 'user',
         db: 'magisterka',
-        password: 'secret'));
+        password: 'user'));
+    print('done');
   }
 
   Future<void> createTable() async{
-    await conn.query('CREATE TABLE users (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, name varchar(255), surname varchar(255), age int, email varchar(255)');
+    await conn.query('CREATE TABLE users (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name varchar(255), surname varchar(255), age INT, email varchar(255)');
   }
 
   Future<void> setUserData(String name, String surname, int age, String email) async{

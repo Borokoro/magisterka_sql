@@ -28,7 +28,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     mySQL.establishConnection();
     timerFunction=TimerFunction(valueChanged: _update);
-    print('done 1');
     super.initState();
   }
 
@@ -70,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   await Records(mySql: mySQL).addRecords();//Records(mySql: mySQL).addRecords();
                   timerFunction.cancelTimer();
                 },
-                child: const Text('Start')),
+                child: const Text('Add records')),
           ],
         ),
       ),

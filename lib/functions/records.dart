@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:magisterka_sql/mySQL/mySQL.dart';
-import 'package:magisterka_sql/models/users.dart';
+import 'package:magisterka_sql/models/userAll.dart';
+
+import '../models/user_selected.dart';
 
 class Records {
   final MySQL mySql;
@@ -153,7 +155,7 @@ class Records {
 
   List<int> randomPrice() {
     List<int> price = <int>[];
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 10; i++) {
       price.add(randomValue());
     }
     return price;
@@ -180,8 +182,17 @@ class Records {
   }
 
   Future<void> getRecords() async {
-    List<User> users = [];
+    List<UserAll> users = [];
     users = await mySql.getAllUsers();
+  }
+
+  Future<void> getRecordsSelected() async {
+    List<UserSelected> users = [];
+    users = await mySql.getAllUsersSelected();
+  }
+
+  Future<void> updateRecords() async {
+    await mySql.updateRecords();
   }
 
   Future<void> deleteRecords() async {

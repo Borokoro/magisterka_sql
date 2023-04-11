@@ -63,13 +63,56 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-                onPressed: () async{
-                  timerFunction.startTimer();
-                  await Records(mySql: mySQL).addRecords();//Records(mySql: mySQL).addRecords();
-                  timerFunction.cancelTimer();
-                },
-                child: const Text('Add records')),
+            SizedBox(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  ElevatedButton(
+                      onPressed: () async{
+                        print('Add');
+                        timerFunction.startTimer();
+                        await Records(mySql: mySQL).addRecords();//Records(mySql: mySQL).addRecords();
+                        timerFunction.cancelTimer();
+                      },
+                      child: const Text('Add records')),
+                  SizedBox(width: 10,),
+                  ElevatedButton(
+                      onPressed: () async{
+                        timerFunction.startTimer();
+                        await Records(mySql: mySQL).deleteRecords();
+                        timerFunction.cancelTimer();
+                      },
+                      child: const Text('Delete records')),
+                  SizedBox(width: 10,),
+                  ElevatedButton(
+                      onPressed: () async{
+                        timerFunction.startTimer();
+                        await Records(mySql: mySQL).getRecords();
+                        timerFunction.cancelTimer();
+                      },
+                      child: const Text('Get all users')),
+                  SizedBox(width: 10,),
+                  ElevatedButton(
+                      onPressed: () async{
+                        timerFunction.startTimer();
+                        await Records(mySql: mySQL).getRecordsSelected();
+                        timerFunction.cancelTimer();
+                      },
+                      child: const Text('Get Selected')),
+                  SizedBox(width: 10,),
+                  ElevatedButton(
+                      onPressed: () async{
+                        timerFunction.startTimer();
+                        await Records(mySql: mySQL).updateRecords();
+                        timerFunction.cancelTimer();
+                      },
+                      child: const Text('Update')),
+                  SizedBox(width: 10,),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -19,12 +19,22 @@ class MySQL {
   final List<String> transactionType = ['bought', 'sold'];
 
   Future<void> establishConnection() async {
-    conn = await MySqlConnection.connect(ConnectionSettings(
+    /*conn = await MySqlConnection.connect(ConnectionSettings(
         host: '10.0.2.2',
         port: 3306,
         user: 'user',
         db: 'magisterka',
-        password: 'user'));
+        password: 'user'));*/
+
+    conn = await MySqlConnection.connect(ConnectionSettings(
+        host: '34.116.209.150',
+        port: 3306,
+        user: 'root',
+        db: 'magisterka',
+        password: 'magisterka'));
+
+
+    //hasło do cloud store to magisterka
 
     /*conn = await MySqlConnection.connect(ConnectionSettings(
         host: 'sql7.freemysqlhosting.net',
@@ -160,7 +170,8 @@ class MySQL {
     int whichId=0;
     var result=await conn.query('SELECT u.PK_usersID, li.name, li.price FROM listed_items li inner join'
         ' users u on u.PK_usersID=li.FK_usersID inner join address a on u.PK_usersID=a.FK_usersID'
-        ' where a.country="Polska"');
+        ' inner join basket_products bp on u.PK_usersID=bp.FK_usersID'
+        ' where a.country="Polska" and bp.name="Kosz"');
     for(var row in result){
       if(listedItem.isEmpty){
         whichId=row[0];

@@ -163,7 +163,7 @@ class Records {
 
   Future<void> addRecords() async {
     await mySql.createTable();
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 500; i++) {
       await mySql.setUserData(i,
           name[randomNumber()],
           surname[randomNumber()],

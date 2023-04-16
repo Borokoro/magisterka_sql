@@ -88,6 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(width: 10,),
                   ElevatedButton(
                       onPressed: () async{
+                        print('get all');
                         timerFunction.startTimer();
                         await Records(mySql: mySQL).getRecords();
                         timerFunction.cancelTimer();
@@ -96,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(width: 10,),
                   ElevatedButton(
                       onPressed: () async{
+                        print ('select');
                         timerFunction.startTimer();
                         await Records(mySql: mySQL).getRecordsSelected();
                         timerFunction.cancelTimer();
@@ -104,6 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(width: 10,),
                   ElevatedButton(
                       onPressed: () async{
+                        print ('update');
                         timerFunction.startTimer();
                         await Records(mySql: mySQL).updateRecords();
                         timerFunction.cancelTimer();
